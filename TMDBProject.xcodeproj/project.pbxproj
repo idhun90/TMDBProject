@@ -15,6 +15,10 @@
 		145821F82899F6CF00B13710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145821F62899F6CF00B13710 /* LaunchScreen.storyboard */; };
 		145822002899F7D400B13710 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 145821FF2899F7D400B13710 /* .gitignore */; };
 		145822022899F82E00B13710 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822012899F82E00B13710 /* SearchViewController.swift */; };
+		145822042899F88E00B13710 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822032899F88E00B13710 /* APIKey.swift */; };
+		145822062899F9C400B13710 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822052899F9C400B13710 /* Constant.swift */; };
+		1458220A2899FAAB00B13710 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822092899FAAB00B13710 /* Example.swift */; };
+		1458220C2899FAB600B13710 /* Example2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458220B2899FAB600B13710 /* Example2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		145821F92899F6CF00B13710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		145821FF2899F7D400B13710 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		145822012899F82E00B13710 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		145822032899F88E00B13710 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIKey.swift; path = TMDBProject/Resource/APIKey.swift; sourceTree = SOURCE_ROOT; };
+		145822052899F9C400B13710 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = SOURCE_ROOT; };
+		145822092899FAAB00B13710 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		1458220B2899FAB600B13710 /* Example2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,16 +69,36 @@
 		145821EA2899F6CF00B13710 /* TMDBProject */ = {
 			isa = PBXGroup;
 			children = (
+				145822082899FA8600B13710 /* Key */,
+				145822072899FA1600B13710 /* Resource */,
+				145822052899F9C400B13710 /* Constant.swift */,
 				145821EB2899F6CF00B13710 /* AppDelegate.swift */,
 				145821ED2899F6CF00B13710 /* SceneDelegate.swift */,
 				145821EF2899F6CF00B13710 /* ViewController.swift */,
+				145822012899F82E00B13710 /* SearchViewController.swift */,
 				145821F12899F6CF00B13710 /* Main.storyboard */,
 				145821F42899F6CF00B13710 /* Assets.xcassets */,
 				145821F62899F6CF00B13710 /* LaunchScreen.storyboard */,
 				145821F92899F6CF00B13710 /* Info.plist */,
-				145822012899F82E00B13710 /* SearchViewController.swift */,
 			);
 			path = TMDBProject;
+			sourceTree = "<group>";
+		};
+		145822072899FA1600B13710 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1458220B2899FAB600B13710 /* Example2.swift */,
+				145822032899F88E00B13710 /* APIKey.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		145822082899FA8600B13710 /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				145822092899FAAB00B13710 /* Example.swift */,
+			);
+			path = Key;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +174,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				145821F02899F6CF00B13710 /* ViewController.swift in Sources */,
+				1458220A2899FAAB00B13710 /* Example.swift in Sources */,
 				145821EC2899F6CF00B13710 /* AppDelegate.swift in Sources */,
 				145822022899F82E00B13710 /* SearchViewController.swift in Sources */,
 				145821EE2899F6CF00B13710 /* SceneDelegate.swift in Sources */,
+				145822042899F88E00B13710 /* APIKey.swift in Sources */,
+				145822062899F9C400B13710 /* Constant.swift in Sources */,
+				1458220C2899FAB600B13710 /* Example2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

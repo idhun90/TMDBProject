@@ -21,7 +21,7 @@
                         <rect key="frame" x="33" y="74.5" width="359" height="341.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자세히 보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIY-19-Uor">
-                                <rect key="frame" x="10" y="311.5" width="60" height="20"/>
+                                <rect key="frame" x="10" y="309.5" width="60" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="7DF-A0-uJj"/>
                                 </constraints>
@@ -30,11 +30,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FV3-g8-emE">
-                                <rect key="frame" x="0.0" y="0.0" width="359" height="212.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="359" height="210.5"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q60-rD-JxS">
-                                <rect key="frame" x="329" y="311.5" width="20" height="20"/>
+                                <rect key="frame" x="329" y="309.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="HaJ-R9-0Di"/>
                                     <constraint firstAttribute="width" constant="20" id="djp-9X-fDd"/>
@@ -44,26 +44,26 @@
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzO-et-OIO">
-                                <rect key="frame" x="10" y="295.5" width="339" height="1"/>
+                                <rect key="frame" x="10" y="293.5" width="339" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="axQ-IJ-h3K"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="간략 소개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsh-bm-Nmy">
-                                <rect key="frame" x="10" y="253" width="63.5" height="20.5"/>
+                                <rect key="frame" x="10" y="251" width="63.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영화 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H95-jD-8Nm">
-                                <rect key="frame" x="10" y="227.5" width="63.5" height="20.5"/>
+                                <rect key="frame" x="10" y="225.5" width="63.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neG-pE-AjS">
-                                <rect key="frame" x="10" y="185.5" width="41.5" height="20"/>
+                                <rect key="frame" x="10" y="183.5" width="41.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ZgT-hg-rKM"/>
                                 </constraints>
@@ -85,7 +85,7 @@
                             <constraint firstItem="TIY-19-Uor" firstAttribute="leading" secondItem="4jY-9l-whE" secondAttribute="leading" constant="10" id="JZI-vk-CaB"/>
                             <constraint firstItem="H95-jD-8Nm" firstAttribute="leading" secondItem="4jY-9l-whE" secondAttribute="leading" constant="10" id="JzO-V4-UAi"/>
                             <constraint firstItem="Wsh-bm-Nmy" firstAttribute="top" secondItem="H95-jD-8Nm" secondAttribute="bottom" constant="5" id="OMv-Za-HEf"/>
-                            <constraint firstAttribute="bottom" secondItem="TIY-19-Uor" secondAttribute="bottom" constant="10" id="Qic-5K-eMn"/>
+                            <constraint firstAttribute="bottom" secondItem="TIY-19-Uor" secondAttribute="bottom" constant="12" id="Qic-5K-eMn"/>
                             <constraint firstItem="H95-jD-8Nm" firstAttribute="top" secondItem="FV3-g8-emE" secondAttribute="bottom" constant="15" id="RvX-nS-3dB"/>
                             <constraint firstItem="FV3-g8-emE" firstAttribute="top" secondItem="4jY-9l-whE" secondAttribute="top" id="VcR-db-ZJZ"/>
                             <constraint firstItem="Wsh-bm-Nmy" firstAttribute="leading" secondItem="4jY-9l-whE" secondAttribute="leading" constant="10" id="baZ-bS-dhI"/>

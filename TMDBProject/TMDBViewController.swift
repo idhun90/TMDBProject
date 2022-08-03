@@ -102,9 +102,13 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let date = DateFormatter()
         date.dateFormat = "yyyy.mm.dd"
-        let changedDate = date.date(from: movieData[indexPath.row].release)!
+        if let changedDate = date.date(from: movieData[indexPath.row].release) {
+            cell.dateLabel.text = date.string(from: changedDate)
+        } else {
+            print("날짜 표기 오류 발생")
+        }
         
-        cell.dateLabel.text = date.string(from: changedDate)
+        
     
         
         return cell

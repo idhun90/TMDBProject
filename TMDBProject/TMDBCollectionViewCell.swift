@@ -9,11 +9,7 @@ import UIKit
 
 class TMDBCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var shadowView: UIView! {
-        didSet {
-
-        }
-    }
+    @IBOutlet weak var shadowView: UIView!
     
     @IBOutlet weak var dateLabel: UILabel! {
         didSet {
@@ -75,8 +71,6 @@ class TMDBCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.2
         // 그림자 위치
         layer.shadowOffset = CGSize(width: 3, height: 3)
-        
-
 
     }
 

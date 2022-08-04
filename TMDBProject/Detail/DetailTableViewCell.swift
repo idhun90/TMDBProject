@@ -9,6 +9,10 @@ import UIKit
 
 class DetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var castImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var characterLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -16,6 +20,11 @@ class DetailTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        castImageView.contentMode = .scaleAspectFill
+        castImageView.layer.cornerRadius = 5
+        
+        nameLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        characterLabel.font = .systemFont(ofSize: 13)
 
     }
     

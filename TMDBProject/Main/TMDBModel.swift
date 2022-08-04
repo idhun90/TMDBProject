@@ -6,5 +6,6 @@ struct TMDB {
     let overview: String
     let image: String
     let vote: Double
+    let poster: String
     
 }

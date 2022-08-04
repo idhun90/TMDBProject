@@ -55,9 +55,10 @@ class TMDBViewController: UIViewController {
                     let overview = movie["overview"].stringValue
                     let image = imageUrl + movie["backdrop_path"].stringValue
                     let vote = movie["vote_average"].doubleValue
+                    let poster = imageUrl + movie["poster_path"].stringValue
                     
                     
-                    let data = TMDB(title: title, release: release, overview: overview, image: image, vote: vote)
+                    let data = TMDB(title: title, release: release, overview: overview, image: image, vote: vote, poster: poster)
                     self.movieData.append(data)
                     
                 }
@@ -135,6 +136,10 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let sb = UIStoryboard(name: StoryboardName.main, bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.id) as? DetailViewController else { return }
+        
+        vc.movieName = movieData[indexPath.row].title
+        vc.movieBackgroundImage = movieData[indexPath.row].image
+        vc.posterImage = movieData[indexPath.row].poster
         
         self.navigationController?.pushViewController(vc, animated: true)
         

@@ -23,6 +23,8 @@
 		145822002899F7D400B13710 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 145821FF2899F7D400B13710 /* .gitignore */; };
 		145822042899F88E00B13710 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822032899F88E00B13710 /* APIKey.swift */; };
 		145822062899F9C400B13710 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822052899F9C400B13710 /* Constant.swift */; };
+		14D82EE1289BF1100004B285 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D82EDF289BF1100004B285 /* DetailTableViewCell.swift */; };
+		14D82EE2289BF1100004B285 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D82EE0289BF1100004B285 /* DetailTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		145821FF2899F7D400B13710 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		145822032899F88E00B13710 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIKey.swift; path = TMDBProject/Key/APIKey.swift; sourceTree = SOURCE_ROOT; };
 		145822052899F9C400B13710 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = TMDBProject/Key/Constant.swift; sourceTree = SOURCE_ROOT; };
+		14D82EDF289BF1100004B285 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		14D82EE0289BF1100004B285 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,11 +94,11 @@
 			children = (
 				145822082899FA8600B13710 /* Key */,
 				145822072899FA1600B13710 /* Resource */,
+				14071B9D289BEBAE003E0116 /* Main */,
+				14D82EE3289BF1250004B285 /* Detail */,
+				145821F12899F6CF00B13710 /* Main.storyboard */,
 				145821EB2899F6CF00B13710 /* AppDelegate.swift */,
 				145821ED2899F6CF00B13710 /* SceneDelegate.swift */,
-				14071B9D289BEBAE003E0116 /* Main */,
-				14071B9B289BEB94003E0116 /* DetailViewController.swift */,
-				145821F12899F6CF00B13710 /* Main.storyboard */,
 				145821F42899F6CF00B13710 /* Assets.xcassets */,
 				145821F62899F6CF00B13710 /* LaunchScreen.storyboard */,
 				145821F92899F6CF00B13710 /* Info.plist */,
@@ -116,6 +120,16 @@
 				145822032899F88E00B13710 /* APIKey.swift */,
 			);
 			path = Key;
+			sourceTree = "<group>";
+		};
+		14D82EE3289BF1250004B285 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				14071B9B289BEB94003E0116 /* DetailViewController.swift */,
+				14D82EDF289BF1100004B285 /* DetailTableViewCell.swift */,
+				14D82EE0289BF1100004B285 /* DetailTableViewCell.xib */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +204,7 @@
 				145822002899F7D400B13710 /* .gitignore in Resources */,
 				145821F82899F6CF00B13710 /* LaunchScreen.storyboard in Resources */,
 				145821F52899F6CF00B13710 /* Assets.xcassets in Resources */,
+				14D82EE2289BF1100004B285 /* DetailTableViewCell.xib in Resources */,
 				145821F32899F6CF00B13710 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D82EE1289BF1100004B285 /* DetailTableViewCell.swift in Sources */,
 				141A30C6289AA2AB00924F98 /* TMDBModel.swift in Sources */,
 				141A30BB289A9AC300924F98 /* TMDBViewController.swift in Sources */,
 				145821EC2899F6CF00B13710 /* AppDelegate.swift in Sources */,

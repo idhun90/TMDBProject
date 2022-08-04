@@ -49,6 +49,42 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="128.57142857142856"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Qxb-aJ-6vE">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="OuL-vl-aQr" customClass="DetailViewController" customModule="TMDBProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cIw-Rp-fc0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kw0-EE-czJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="o6F-Wa-Jq0">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="192"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cmn-hh-nev"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kw0-EE-czJ" firstAttribute="top" secondItem="cmn-hh-nev" secondAttribute="top" id="CsZ-7N-dgQ"/>
+                            <constraint firstItem="cmn-hh-nev" firstAttribute="bottom" secondItem="kw0-EE-czJ" secondAttribute="bottom" id="GfX-bi-amv"/>
+                            <constraint firstItem="kw0-EE-czJ" firstAttribute="leading" secondItem="cmn-hh-nev" secondAttribute="leading" id="STI-2f-2e4"/>
+                            <constraint firstItem="cmn-hh-nev" firstAttribute="trailing" secondItem="kw0-EE-czJ" secondAttribute="trailing" id="T49-uW-mdE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DetailHeaderUIview" destination="o6F-Wa-Jq0" id="Kjz-DM-6zJ"/>
+                        <outlet property="DetailTableView" destination="kw0-EE-czJ" id="gMQ-sA-rqK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Rn-6C-Ia6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905.7971014492755" y="128.57142857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4hw-71-KPM">
             <objects>

@@ -133,5 +133,10 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let sb = UIStoryboard(name: StoryboardName.main, bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: DetailViewController.id) as? DetailViewController else { return }
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }

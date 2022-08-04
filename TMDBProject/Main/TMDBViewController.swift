@@ -16,12 +16,15 @@ class TMDBViewController: UIViewController {
     @IBOutlet weak var TMDBCollectionView: UICollectionView!
     
     var movieData: [TMDB] = []
+    var pageNumber = 1
+    let totalPage = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         TMDBCollectionView.dataSource = self
         TMDBCollectionView.delegate = self
+        TMDBCollectionView.prefetchDataSource = self
         
         let nib = UINib(nibName: TMDBCollectionViewCell.id, bundle: nil)
         TMDBCollectionView.register(nib, forCellWithReuseIdentifier: TMDBCollectionViewCell.id)
@@ -36,7 +39,8 @@ class TMDBViewController: UIViewController {
     }
     
     func requestTMDB() {
-        let url = "\(EndPoint.TmdbURL)api_key=\(APIKey.TMDB)"
+        
+        let url = "\(EndPoint.TmdbURL)api_key=\(APIKey.TMDB)&page=\(pageNumber)"
         let imageUrl = "https://image.tmdb.org/t/p/w500"
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
@@ -52,12 +56,12 @@ class TMDBViewController: UIViewController {
                     let image = imageUrl + movie["backdrop_path"].stringValue
                     let vote = movie["vote_average"].doubleValue
                     
-                    let data = TMDB(title: title, release: release, overview: overview, image: image, vote: vote)
                     
+                    let data = TMDB(title: title, release: release, overview: overview, image: image, vote: vote)
                     self.movieData.append(data)
                     
                 }
-                
+                print(self.movieData[0].title)
                 self.TMDBCollectionView.reloadData()
                 
             case .failure(let error):
@@ -82,7 +86,23 @@ class TMDBViewController: UIViewController {
     }
 }
 
+extension TMDBViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("==== prefetchIndexPath: \(indexPaths) ====")
 
+        for indexPath in indexPaths {
+            if movieData.count-1 == indexPath.item && movieData.count < totalPage {
+             pageNumber += 1
+
+            requestTMDB()
+            }
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print("==== cancelPrefetchingForItemsAt: \(indexPaths) ====")
+    }
+}
 
 extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -108,9 +128,10 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("날짜 표기 오류 발생")
         }
         
-        
-    
-        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }

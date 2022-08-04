@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14071B9C289BEB94003E0116 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14071B9B289BEB94003E0116 /* DetailViewController.swift */; };
 		141A30B8289A9AB000924F98 /* TMDBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A30B6289A9AB000924F98 /* TMDBCollectionViewCell.swift */; };
 		141A30B9289A9AB000924F98 /* TMDBCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141A30B7289A9AB000924F98 /* TMDBCollectionViewCell.xib */; };
 		141A30BB289A9AC300924F98 /* TMDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A30BA289A9AC300924F98 /* TMDBViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14071B9B289BEB94003E0116 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		141A30B6289A9AB000924F98 /* TMDBCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCollectionViewCell.swift; sourceTree = "<group>"; };
 		141A30B7289A9AB000924F98 /* TMDBCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMDBCollectionViewCell.xib; sourceTree = "<group>"; };
 		141A30BA289A9AC300924F98 /* TMDBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14071B9D289BEBAE003E0116 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				141A30C5289AA2AB00924F98 /* TMDBModel.swift */,
+				141A30BA289A9AC300924F98 /* TMDBViewController.swift */,
+				141A30B6289A9AB000924F98 /* TMDBCollectionViewCell.swift */,
+				141A30B7289A9AB000924F98 /* TMDBCollectionViewCell.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		145821DF2899F6CF00B13710 = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +92,9 @@
 				145822072899FA1600B13710 /* Resource */,
 				145821EB2899F6CF00B13710 /* AppDelegate.swift */,
 				145821ED2899F6CF00B13710 /* SceneDelegate.swift */,
+				14071B9D289BEBAE003E0116 /* Main */,
+				14071B9B289BEB94003E0116 /* DetailViewController.swift */,
 				145821F12899F6CF00B13710 /* Main.storyboard */,
-				141A30C5289AA2AB00924F98 /* TMDBModel.swift */,
-				141A30BA289A9AC300924F98 /* TMDBViewController.swift */,
-				141A30B6289A9AB000924F98 /* TMDBCollectionViewCell.swift */,
-				141A30B7289A9AB000924F98 /* TMDBCollectionViewCell.xib */,
 				145821F42899F6CF00B13710 /* Assets.xcassets */,
 				145821F62899F6CF00B13710 /* LaunchScreen.storyboard */,
 				145821F92899F6CF00B13710 /* Info.plist */,
@@ -197,6 +208,7 @@
 				145821EE2899F6CF00B13710 /* SceneDelegate.swift in Sources */,
 				145822042899F88E00B13710 /* APIKey.swift in Sources */,
 				145822062899F9C400B13710 /* Constant.swift in Sources */,
+				14071B9C289BEB94003E0116 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

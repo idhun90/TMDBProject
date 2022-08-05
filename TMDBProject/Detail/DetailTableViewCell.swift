@@ -25,7 +25,6 @@ class DetailTableViewCell: UITableViewCell {
         
         nameLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         characterLabel.font = .systemFont(ofSize: 13)
-
     }
     
 }

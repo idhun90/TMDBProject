@@ -16,12 +16,14 @@ class TMDBViewController: UIViewController {
     @IBOutlet weak var TMDBCollectionView: UICollectionView!
     
     var movieData: [TMDB] = []
-//    var castData: [Cast] = []
+
     var pageNumber = 1
     let totalPage = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = .systemGray
         
         TMDBCollectionView.dataSource = self
         TMDBCollectionView.delegate = self
@@ -42,7 +44,7 @@ class TMDBViewController: UIViewController {
     }
     
     func requestTMDB(page: Int) {
-        
+
         let url = "\(EndPoint.TmdbURL)api_key=\(APIKey.TMDB)&page=\(page)"
 
         AF.request(url, method: .get).validate().responseJSON { response in
@@ -50,9 +52,9 @@ class TMDBViewController: UIViewController {
             case .success(let value):
                 let json = JSON(value)
 //                print("JSON: \(json)")
-                
+
                 for movie in json["results"].arrayValue {
-                    
+
                     let title = movie["title"].stringValue
                     let release = movie["release_date"].stringValue
                     let overview = movie["overview"].stringValue
@@ -60,17 +62,18 @@ class TMDBViewController: UIViewController {
                     let vote = movie["vote_average"].doubleValue
                     let poster = EndPoint.tmdImage + movie["poster_path"].stringValue
                     let castId = movie["id"].intValue
-                    
+
 //                    self.fetchMovieId(id: castId)
-                    
+
                     let data = TMDB(title: title, release: release, overview: overview, image: image, vote: vote, poster: poster, movieid: castId)
                     self.movieData.append(data)
-                    
+
                 }
 //                print(self.movieData[0].title)
-                print(self.movieData[0].movieid)
+//                print(self.movieData[0].movieid)
+                print(self.movieData[0].overview)
                 self.TMDBCollectionView.reloadData()
-                
+
             case .failure(let error):
                 print(error)
             }
@@ -157,10 +160,6 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("날짜 표기 오류 발생")
         }
         
-        
-//        print("\(movieData[indexPath.row].movieid)")
-        
-        
         return cell
     }
     
@@ -172,9 +171,12 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.movieName = movieData[indexPath.row].title
         vc.movieBackgroundImage = movieData[indexPath.row].image
         vc.posterImage = movieData[indexPath.row].poster
-//        vc.castInfo = castData[indexPath.row]
         vc.movieid = movieData[indexPath.row].movieid
-        print(vc.movieid)
+        vc.overview = movieData[indexPath.row].overview
+        
+        
+        //전체 값 전달
+//        vc.Data = movieData[indexPath.row]
         
         navigationItem.backButtonTitle = ""
         self.navigationController?.pushViewController(vc, animated: true)

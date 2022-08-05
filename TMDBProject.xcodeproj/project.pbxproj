@@ -25,6 +25,8 @@
 		145822062899F9C400B13710 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145822052899F9C400B13710 /* Constant.swift */; };
 		14D82EE1289BF1100004B285 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D82EDF289BF1100004B285 /* DetailTableViewCell.swift */; };
 		14D82EE2289BF1100004B285 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14D82EE0289BF1100004B285 /* DetailTableViewCell.xib */; };
+		14E1261D289CF54D00F51E56 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1261B289CF54D00F51E56 /* OverViewTableViewCell.swift */; };
+		14E1261E289CF54D00F51E56 /* OverViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14E1261C289CF54D00F51E56 /* OverViewTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		145822052899F9C400B13710 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = TMDBProject/Key/Constant.swift; sourceTree = SOURCE_ROOT; };
 		14D82EDF289BF1100004B285 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		14D82EE0289BF1100004B285 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		14E1261B289CF54D00F51E56 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
+		14E1261C289CF54D00F51E56 /* OverViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverViewTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				14071B9B289BEB94003E0116 /* DetailViewController.swift */,
 				14D82EDF289BF1100004B285 /* DetailTableViewCell.swift */,
 				14D82EE0289BF1100004B285 /* DetailTableViewCell.xib */,
+				14E1261B289CF54D00F51E56 /* OverViewTableViewCell.swift */,
+				14E1261C289CF54D00F51E56 /* OverViewTableViewCell.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -200,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E1261E289CF54D00F51E56 /* OverViewTableViewCell.xib in Resources */,
 				141A30B9289A9AB000924F98 /* TMDBCollectionViewCell.xib in Resources */,
 				145822002899F7D400B13710 /* .gitignore in Resources */,
 				145821F82899F6CF00B13710 /* LaunchScreen.storyboard in Resources */,
@@ -222,6 +229,7 @@
 				145821EC2899F6CF00B13710 /* AppDelegate.swift in Sources */,
 				141A30B8289A9AB000924F98 /* TMDBCollectionViewCell.swift in Sources */,
 				145821EE2899F6CF00B13710 /* SceneDelegate.swift in Sources */,
+				14E1261D289CF54D00F51E56 /* OverViewTableViewCell.swift in Sources */,
 				145822042899F88E00B13710 /* APIKey.swift in Sources */,
 				145822062899F9C400B13710 /* Constant.swift in Sources */,
 				14071B9C289BEB94003E0116 /* DetailViewController.swift in Sources */,

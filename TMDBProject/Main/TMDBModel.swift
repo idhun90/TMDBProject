@@ -8,6 +8,7 @@ struct TMDB {
     let vote: Double
     let poster: String
     let movieid: Int
+    
 }
 
 struct Cast {

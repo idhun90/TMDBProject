@@ -5,6 +5,11 @@ import Alamofire
 import Kingfisher
 import SwiftyJSON
 
+enum SectionName: String {
+    case overView = "OverView"
+    case cast = "Cast"
+}
+
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var DetailHeaderUIview: UIView!
@@ -20,7 +25,8 @@ class DetailViewController: UIViewController {
     var movieName: String?
     var movieid: Int?
     var castInfo: [Cast] = []
-
+    var overview: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +34,20 @@ class DetailViewController: UIViewController {
         DetailTableView.delegate = self
         DetailTableView.dataSource = self
         
-        let nib = UINib(nibName: DetailTableViewCell.id, bundle: nil)
-        DetailTableView.register(nib, forCellReuseIdentifier: DetailTableViewCell.id)
+        let castNib = UINib(nibName: DetailTableViewCell.id, bundle: nil)
+        DetailTableView.register(castNib, forCellReuseIdentifier: DetailTableViewCell.id)
+        
+        let overViewNib = UINib(nibName: OverViewTableViewCell.id, bundle: nil)
+        DetailTableView.register(overViewNib, forCellReuseIdentifier: OverViewTableViewCell.id)
+        
         DetailTableView.rowHeight = 80
+        
+        title = movieName
+        navigationController?.navigationBar.tintColor = .systemGray
         
         // 값 전달
         movieNameLabel.text = movieName
+        
         imageUrl(data: movieBackgroundImage!, imageView: backgroundImageView)
         imageUrl(data: posterImage!, imageView: posterImageView)
         
@@ -48,32 +62,31 @@ class DetailViewController: UIViewController {
         fetchMovieId(id: movieid)
     }
     
-//    func request
     func fetchMovieId(id: Int) {
-            let url = "\(EndPoint.getCastCrew)/\(id)/credits?api_key=\(APIKey.TMDB)"
-            AF.request(url, method: .get).validate().responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-    //                print("JSON: \(json)")
-    
-                    for cast in json["cast"].arrayValue {
-                        let name = cast["name"].stringValue
-                        let profile = EndPoint.tmdImage + cast["profile_path"].stringValue
-                        let character = cast["character"].stringValue
-                        
-                        let data = Cast(name: name, profile: profile, character: character)
-                        
-                        self.castInfo.append(data)
-                    }
+        let url = "\(EndPoint.getCastCrew)/\(id)/credits?api_key=\(APIKey.TMDB)"
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                
+                for cast in json["cast"].arrayValue {
+                    let name = cast["name"].stringValue
+                    let profile = EndPoint.tmdImage + cast["profile_path"].stringValue
+                    let character = cast["character"].stringValue
                     
-                    self.DetailTableView.reloadData()
-                    print(self.castInfo)
-                case .failure(let error):
-                    print(error)
+                    let data = Cast(name: name, profile: profile, character: character)
+                    
+                    self.castInfo.append(data)
                 }
+                
+                self.DetailTableView.reloadData()
+                print(self.castInfo)
+            case .failure(let error):
+                print(error)
             }
         }
+    }
     
     func imageUrl(data: String, imageView: UIImageView!) {
         
@@ -99,22 +112,58 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("출력: \(castInfo.count)")
-        return castInfo.count
+        switch section {
+            
+        case 0:
+            return 1
+        case 1:
+            return castInfo.count
+        default :
+            return 0
+        }
+        //        return castInfo.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = DetailTableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.id, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+        if indexPath.section == 0 {
+            guard let cell = DetailTableView.dequeueReusableCell(withIdentifier: OverViewTableViewCell.id, for: indexPath) as? OverViewTableViewCell else { return UITableViewCell() }
+                
+            cell.overViewLabel.text = overview
+            
+            return cell
+            
+        } else if indexPath.section == 1 {
+            guard let cell = DetailTableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.id, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+            
+            let url = URL(string: castInfo[indexPath.row].profile)
+            cell.castImageView.kf.setImage(with: url)
+            cell.nameLabel.text = castInfo[indexPath.row].name
+            cell.characterLabel.text = castInfo[indexPath.row].character
+            
+            return cell
+            
+        } else {
+        return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let url = URL(string: castInfo[indexPath.row].profile)
-        cell.castImageView.kf.setImage(with: url)
-        cell.nameLabel.text = castInfo[indexPath.row].name
-        cell.characterLabel.text = castInfo[indexPath.row].character
-        
-        
-        return cell
+        switch section {
+        case 0:
+            return SectionName.overView.rawValue
+        case 1:
+            return SectionName.cast.rawValue
+        default:
+            return "오류 발생"
+        }
     }
 }

@@ -4,10 +4,12 @@ import UIKit
 import Alamofire
 import Kingfisher
 import SwiftyJSON
+import Accelerate
 
-enum SectionName: String {
+enum SectionName: String, CaseIterable{
     case overView = "OverView"
     case cast = "Cast"
+    case crew = "Crew"
 }
 
 class DetailViewController: UIViewController {
@@ -25,6 +27,7 @@ class DetailViewController: UIViewController {
     var movieName: String?
     var movieid: Int?
     var castInfo: [Cast] = []
+    var crewInfo: [Crew] = []
     var overview: String?
     
     
@@ -43,7 +46,7 @@ class DetailViewController: UIViewController {
         DetailTableView.rowHeight = 80
         
         title = movieName
-        navigationController?.navigationBar.tintColor = .systemGray
+        navigationController?.navigationBar.tintColor = .black
         
         // 값 전달
         movieNameLabel.text = movieName
@@ -69,19 +72,32 @@ class DetailViewController: UIViewController {
             case .success(let value):
                 let json = JSON(value)
                 
-                
                 for cast in json["cast"].arrayValue {
                     let name = cast["name"].stringValue
                     let profile = EndPoint.tmdImage + cast["profile_path"].stringValue
                     let character = cast["character"].stringValue
                     
                     let data = Cast(name: name, profile: profile, character: character)
-                    
                     self.castInfo.append(data)
                 }
                 
+                for crew in json["crew"].arrayValue {
+                    let name = crew["name"].stringValue
+                    let profile = EndPoint.tmdImage + crew["profile_path"].stringValue
+                    let job = crew["job"].stringValue
+                    
+                    let data = Crew(name: name, profile: profile, job: job)
+                    self.crewInfo.append(data)
+                    
+                }
                 self.DetailTableView.reloadData()
-                print(self.castInfo)
+                
+                print(self.castInfo[0])
+                print(self.crewInfo[0])
+                print(self.castInfo.count)
+                print(self.crewInfo.count)
+                
+//                print(self.castInfo)
             case .failure(let error):
                 print(error)
             }
@@ -114,35 +130,36 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return SectionName.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-            
         case 0:
             return 1
         case 1:
             return castInfo.count
+        case 2:
+            return crewInfo.count
         default :
             return 0
         }
-        //        return castInfo.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        guard let cell = DetailTableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.id, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
+    
         if indexPath.section == 0 {
             guard let cell = DetailTableView.dequeueReusableCell(withIdentifier: OverViewTableViewCell.id, for: indexPath) as? OverViewTableViewCell else { return UITableViewCell() }
-                
+
             cell.overViewLabel.text = overview
             
             return cell
             
         } else if indexPath.section == 1 {
-            guard let cell = DetailTableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.id, for: indexPath) as? DetailTableViewCell else { return UITableViewCell() }
-            
+
             let url = URL(string: castInfo[indexPath.row].profile)
             cell.castImageView.kf.setImage(with: url)
             cell.nameLabel.text = castInfo[indexPath.row].name
@@ -150,8 +167,20 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
+        } else if indexPath.section == 2 {
+            
+            let url = URL(string: crewInfo[indexPath.row].profile)
+            cell.castImageView.kf.setImage(with: url)
+            cell.nameLabel.text = crewInfo[indexPath.row].name
+            cell.characterLabel.text = crewInfo[indexPath.row].job
+            
+            
+            return cell
+            
         } else {
+            
         return UITableViewCell()
+            
         }
     }
     
@@ -162,6 +191,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             return SectionName.overView.rawValue
         case 1:
             return SectionName.cast.rawValue
+        case 2:
+            return SectionName.crew.rawValue
         default:
             return "오류 발생"
         }

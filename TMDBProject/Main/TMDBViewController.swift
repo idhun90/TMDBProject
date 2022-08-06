@@ -23,7 +23,7 @@ class TMDBViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.tintColor = .systemGray
+        navigationController?.navigationBar.tintColor = .black
         
         TMDBCollectionView.dataSource = self
         TMDBCollectionView.delegate = self
@@ -64,14 +64,18 @@ class TMDBViewController: UIViewController {
                     let castId = movie["id"].intValue
 
 //                    self.fetchMovieId(id: castId)
+                    print("현재 페이지: \(page)")
+                    print("==== 영화 제목: \(title) ====")
 
                     let data = TMDB(title: title, release: release, overview: overview, image: image, vote: vote, poster: poster, movieid: castId)
                     self.movieData.append(data)
 
                 }
+                print(self.movieData.count)
 //                print(self.movieData[0].title)
 //                print(self.movieData[0].movieid)
-                print(self.movieData[0].overview)
+//                print(self.movieData[0].overview)
+            
                 self.TMDBCollectionView.reloadData()
 
             case .failure(let error):
@@ -79,28 +83,6 @@ class TMDBViewController: UIViewController {
             }
         }
     }
-    
-//    func fetchMovieId(id: Int) {
-//        let url = "\(EndPoint.getCastCrew)/\(id)/credits?api_key=\(APIKey.TMDB)"
-//        AF.request(url, method: .get).validate().responseJSON { response in
-//            switch response.result {
-//            case .success(let value):
-//                let json = JSON(value)
-////                print("JSON: \(json)")
-//
-//                for cast in json["cast"].arrayValue {
-//                    let name = cast["name"].stringValue
-//                    let profile = EndPoint.tmdImage + cast["profile_path"].stringValue
-//
-//                    let castData = Cast(name: name, profile: profile)
-//                    self.castData.append(castData)
-//                }
-////                print(self.castData)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
     
     func collectionViewLayout() {
         
@@ -125,6 +107,7 @@ extension TMDBViewController: UICollectionViewDataSourcePrefetching {
         for indexPath in indexPaths {
             if movieData.count-1 == indexPath.item && movieData.count < totalPage {
              pageNumber += 1
+            print("========= 현재 페이지: \(pageNumber)==========")
 
                 requestTMDB(page: pageNumber)
             }
@@ -132,7 +115,7 @@ extension TMDBViewController: UICollectionViewDataSourcePrefetching {
     }
 
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        print("==== cancelPrefetchingForItemsAt: \(indexPaths) ====")
+//        print("==== cancelPrefetchingForItemsAt: \(indexPaths) ====")
     }
 }
 
@@ -148,8 +131,10 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let url = URL(string: movieData[indexPath.row].image)
         cell.movieImageView.kf.setImage(with: url)
         cell.movieImageView.contentMode = .scaleAspectFill
+        
         cell.movieTitleLabel.text = movieData[indexPath.row].title
         cell.overViewLabel.text = movieData[indexPath.row].overview
+        
         cell.voteLabel.text = " " + String(Int(movieData[indexPath.row].vote)) + " "
         
         let date = DateFormatter()
@@ -173,6 +158,7 @@ extension TMDBViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.posterImage = movieData[indexPath.row].poster
         vc.movieid = movieData[indexPath.row].movieid
         vc.overview = movieData[indexPath.row].overview
+        
         
         
         //전체 값 전달

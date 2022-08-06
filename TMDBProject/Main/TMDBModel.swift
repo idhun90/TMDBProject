@@ -16,3 +16,9 @@ struct Cast {
     let profile: String
     let character: String
 }
+
+struct Crew {
+    let name: String
+    let profile: String
+    let job: String
+}
